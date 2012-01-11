@@ -13,3 +13,7 @@ Consider it your *poor-man's-private-gem-server-release-tool™*.
 ```
 iq_gem --gemspec YOUR_GEM.gemspec --gem-repo REPO_DIR
 ```
+
+For a list of possible command options use:
+
+`iq_gem --help`
