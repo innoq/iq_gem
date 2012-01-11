@@ -11,5 +11,5 @@ Consider it your *poor-man's-private-gem-server-release-tool™*.
 ## Usage
 
 ```
-iq_gem YOUR_GEM.gemspec SSH_USER REMOTE_GEM_REPO
+iq_gem --gemspec YOUR_GEM.gemspec --gem-repo REPO_DIR
 ```
