@@ -11,7 +11,7 @@ Consider it your *poor-man's-private-gem-server-release-tool™*.
 ## Usage
 
 ```
-iq_gem --gemspec YOUR_GEM.gemspec --gem-repo REPO_DIR
+iq_gem --gemspec YOUR_GEM.gemspec --tag x.x.x --gem-repo REPO_DIR
 ```
 
 For a list of possible command options use:

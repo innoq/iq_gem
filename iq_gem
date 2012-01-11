@@ -6,6 +6,7 @@ require 'trollop'
 
 opts = Trollop.options do
   opt :gemspec, ".gemspec file", :type => :string
+  opt :tag, "git tag to use", :default => "master"
   opt :ssh_user, "SSH user to connect to gems.innoq.com", :default => "iqvoc"
   opt :gem_host, "Private gem host", :default => "gems.innoq.com"
   opt :gem_root, "Root path of the gem repositories", :default => "/var/www/gems"
@@ -15,9 +16,14 @@ end
 Trollop.die :gemspec, "must be given"  unless opts[:gemspec]
 Trollop.die :gem_repo, "must be given" unless opts[:gem_repo]
 
+system "git checkout #{opts[:tag]}"
+
 build = `gem build #{opts[:gemspec]}`
 build.match(/File:\s(.*)/)
 gem_file = $1.strip
 
 system "scp #{gem_file} #{opts[:ssh_user]}@#{opts[:gem_host]}:#{opts[:gem_root]}/#{opts[:gem_repo]}/gems/"
 system "ssh #{opts[:ssh_user]}@#{opts[:gem_host]} \"bash -l -c 'gem generate_index --directory #{opts[:gem_root]}/*'\""
+
+# leave detached head state in case of tag
+system "git checkout master"
