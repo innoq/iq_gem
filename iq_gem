@@ -2,7 +2,7 @@
 # encoding: UTF-8
 
 usage = <<TXT
-Usage: iq_gem.rb YOUR_GEM.gemspec SSH_USER REMOTE_GEM_REPO
+Usage: iq_gem YOUR_GEM.gemspec SSH_USER REMOTE_GEM_REPO
 TXT
 
 if ARGV.size < 3
